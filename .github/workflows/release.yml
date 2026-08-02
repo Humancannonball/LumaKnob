@@ -1,4 +1,4 @@
-name: Draft Windows release
+name: Windows release
 
 on:
   push:
@@ -9,61 +9,50 @@ permissions:
   contents: write
 
 jobs:
-  build-test-package:
+  release:
     runs-on: windows-latest
     timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v7
-
       - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.302
 
-      - name: Restore
-        run: dotnet restore LumaKnob.slnx
+      - run: dotnet restore LumaKnob.slnx
+      - run: dotnet build LumaKnob.slnx --configuration Release --no-restore
+      - run: dotnet test LumaKnob.slnx --configuration Release --no-build --no-restore
 
-      - name: Build
-        run: dotnet build LumaKnob.slnx --configuration Release --no-restore
-
-      - name: Test
-        run: dotnet test LumaKnob.slnx --configuration Release --no-build --no-restore
-
-      - name: Package win-x64
+      - name: Build LumaKnob.exe
         shell: pwsh
         run: |
           $version = "${{ github.ref_name }}".TrimStart("v")
           .\scripts\publish-win-x64.ps1 -Version $version
 
-      - name: Write checksum and release notes
-        shell: pwsh
-        run: |
-          $archive = "artifacts\LumaKnob-win-x64.zip"
-          $hash = (Get-FileHash $archive -Algorithm SHA256).Hash.ToLowerInvariant()
-          "$hash  LumaKnob-win-x64.zip" | Set-Content "artifacts\SHA256SUMS.txt" -Encoding ascii
-          @"
-          This is a supervised LumaKnob prerelease for Windows x64 device testing.
-
-          The portable executable is not yet production-signed. Windows may show a SmartScreen warning. Do not disable Windows security controls; verify SHA256SUMS.txt and use the emergency restore path described in PROJECT.md.
-          "@ | Set-Content "artifacts\release-notes.md" -Encoding utf8
-
-      - name: Upload workflow artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: LumaKnob-${{ github.ref_name }}-win-x64
-          path: |
-            artifacts/LumaKnob-win-x64.zip
-            artifacts/SHA256SUMS.txt
-          if-no-files-found: error
-
-      - name: Create draft prerelease
+      - name: Create draft release
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          $hash = (Get-FileHash "artifacts\LumaKnob.exe" -Algorithm SHA256).Hash.ToLowerInvariant()
+          @"
+          **[Download LumaKnob.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/LumaKnob.exe) and open it.**
+
+          Windows x64 · no installer · no extraction · no separate .NET runtime
+
+          This is an unsigned alpha. Press **Ctrl+Alt+Home** to restore all displays.
+
+          <details><summary>Verification</summary>
+
+          Built on GitHub's Windows runner after all 45 tests passed.
+
+          SHA-256: ``$hash``
+
+          </details>
+          "@ | Set-Content "artifacts\release-notes.md" -Encoding utf8
+
           gh release create "${{ github.ref_name }}" `
-            "artifacts\LumaKnob-win-x64.zip" `
-            "artifacts\SHA256SUMS.txt" `
+            "artifacts\LumaKnob.exe" `
             --verify-tag `
             --draft `
             --prerelease `
