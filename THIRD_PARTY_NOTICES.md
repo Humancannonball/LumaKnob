@@ -17,11 +17,9 @@ families. Versions are pinned in `Directory.Packages.props` and were audited on
 | SkiaSharp and Windows native assets | 3.119.4 | MIT; Microsoft, with upstream notices |
 | System.CodeDom and System.Management | 10.0.10 | MIT; Microsoft Corporation |
 
-The portable package includes the exact restored native notices as
-`NATIVE_THIRD_PARTY_NOTICES.txt`, `SKIASHARP_LICENSE.txt`, and
-`ANGLE_LICENSE.txt`. Those files contain the required upstream notices for
-Skia, HarfBuzz, ANGLE, and embedded native components. They are part of the
-distribution and must not be removed when redistributing the executable.
+The release executable embeds this file, LumaKnob's MIT license, and the exact
+restored SkiaSharp/HarfBuzzSharp and ANGLE native notices. They remain part of
+the single-file distribution.
 
 ## Common MIT license text
 

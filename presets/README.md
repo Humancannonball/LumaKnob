@@ -1,30 +1,14 @@
-# LumaKnob appearance presets
+# Appearance presets
 
-The included presets contain data only: they cannot execute code or replace
-Avalonia markup. Start LumaKnob with one directly:
+Preview a preset from the repository:
 
 ```powershell
 LumaKnob.exe --appearance=presets\amber-rack.json
 ```
 
-Copy the chosen file to
-`%LocalAppData%\LumaKnob\appearance.json` to load it automatically. The header's
-`FX LIVE` button pauses motion for the current session. `--no-motion` disables
-it at startup regardless of the preset.
+Copy it to `%LocalAppData%\LumaKnob\appearance.json` to load it by default.
+Use `--no-motion` to disable animation.
 
-Schema 2 accepts `#RRGGBB` and `#AARRGGBB` colors for the named tokens in the
-example files. Alpha allows subdued backplane layers. Unknown token names and
-invalid colors are ignored.
-
-The optional `visuals` object accepts:
-
-- `motionEnabled`: `true` or `false`;
-- `motionSpeed`: `0.1` through `3.0`;
-- `motionIntensity`: `0.0` through `1.0`;
-- `framesPerSecond`: `10` through `60`;
-- `knobDepth`: `0.5` through `2.5`;
-- `panelDepth`: `0.5` through `3.0`;
-- `cornerRadius`: `0` through `12`.
-
-Out-of-range values fall back to the built-in value without discarding the
-rest of the preset. Color-only schema-1 presets remain compatible.
+Presets are data only. They may set known colors plus motion, frame rate, knob
+depth, panel depth, and corner radius within safe limits. Invalid values are
+ignored. The JSON examples define the complete schema.

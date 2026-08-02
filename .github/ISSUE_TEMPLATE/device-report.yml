@@ -1,78 +1,40 @@
-name: Monitor or device report
-description: Share a supervised WMI, DDC/CI, shade, HDR, gamma, or input result.
+name: Device report
+description: Share a monitor or GPU result.
 title: "[Device]: "
-labels:
-  - device-report
+labels: [device-report]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Complete the supervised protocol in PROJECT.md and stop at the first recovery failure. Never post an EDID serial number.
   - type: input
-    id: version
+    id: setup
     attributes:
-      label: LumaKnob version
-      placeholder: v0.1.0-alpha.1
-    validations:
-      required: true
-  - type: input
-    id: system
-    attributes:
-      label: Windows and GPU/driver
-      placeholder: Windows 11 build; NVIDIA/AMD/Intel model and driver
-    validations:
-      required: true
-  - type: input
-    id: monitor
-    attributes:
-      label: Monitor model and connection
-      description: Model and HDMI/DisplayPort/USB-C/dock only—no serial number.
+      label: Version and setup
+      placeholder: LumaKnob version; Windows; GPU/driver; monitor model; connection
     validations:
       required: true
   - type: dropdown
     id: backend
     attributes:
-      label: Backend shown by LumaKnob
-      options:
-        - WMI + shade
-        - DDC/CI + shade
-        - Shade only
-        - Simulator
-        - Discovery failed
-    validations:
-      required: true
-  - type: dropdown
-    id: hdr
-    attributes:
-      label: HDR state
-      options:
-        - Disabled
-        - Enabled
-        - Unsupported
-        - Unknown
+      label: Backend shown
+      options: [WMI + shade, DDC/CI + shade, Shade only, Discovery failed]
     validations:
       required: true
   - type: textarea
-    id: results
+    id: result
     attributes:
-      label: Test sequence and visual result
-      description: State which PROJECT.md protocol steps passed or failed.
+      label: What worked or failed?
     validations:
       required: true
   - type: textarea
     id: diagnostics
     attributes:
-      label: Relevant diagnostics
-      description: Paste only relevant COPY LOG lines after removing private data.
+      label: Relevant COPY LOG lines
+      description: Remove usernames, EDID serial numbers, and unrelated data.
       render: text
   - type: checkboxes
-    id: recovery
+    id: safety
     attributes:
-      label: Recovery
+      label: Safety
       options:
-        - label: Ctrl+Alt+Home successfully restored a visible desktop.
+        - label: Ctrl+Alt+Home and normal Exit restored the displays.
           required: true
-        - label: Normal Exit removed shade and color-ramp changes.
-          required: true
-        - label: This report contains no EDID serial number or username.
+        - label: This report contains no username or EDID serial number.
           required: true
