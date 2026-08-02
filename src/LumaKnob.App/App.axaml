@@ -1,0 +1,80 @@
+<Application
+    x:Class="LumaKnob.App.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="using:System"
+    RequestedThemeVariant="Dark">
+  <TrayIcon.Icons>
+    <TrayIcons>
+      <TrayIcon
+          Icon="/Assets/lumaknob.ico"
+          ToolTipText="LumaKnob display control"
+          Clicked="OpenQuickControlFromTray">
+        <TrayIcon.Menu>
+          <NativeMenu>
+            <NativeMenuItem Header="Quick Control" Click="OpenQuickControlFromMenu" />
+            <NativeMenuItem Header="Control Deck" Click="OpenControlDeckFromMenu" />
+            <NativeMenuItemSeparator />
+            <NativeMenuItem Header="Restore displays to 50%" Click="RestoreFromTray" />
+            <NativeMenuItemSeparator />
+            <NativeMenuItem Header="Exit LumaKnob" Click="ExitFromTray" />
+          </NativeMenu>
+        </TrayIcon.Menu>
+      </TrayIcon>
+    </TrayIcons>
+  </TrayIcon.Icons>
+  <Application.Resources>
+    <SolidColorBrush x:Key="KnobOuterBrush" Color="#090B0C" />
+    <LinearGradientBrush x:Key="KnobFaceBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+      <GradientStop Color="#596164" Offset="0" />
+      <GradientStop Color="#34393B" Offset="0.42" />
+      <GradientStop Color="#1D2122" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="KnobHubBrush" Color="#171A1B" />
+    <SolidColorBrush x:Key="KnobRimBrush" Color="#697174" />
+    <SolidColorBrush x:Key="KnobShadowBrush" Color="#050606" />
+    <SolidColorBrush x:Key="KnobTickBrush" Color="#757D80" />
+    <SolidColorBrush x:Key="KnobActiveTickBrush" Color="#B4D99B" />
+    <SolidColorBrush x:Key="KnobMarkerBrush" Color="#E2E8DB" />
+    <SolidColorBrush x:Key="KnobFocusBrush" Color="#E2B659" />
+    <SolidColorBrush x:Key="KnobHighlightBrush" Color="#A6B0B2" />
+
+    <LinearGradientBrush x:Key="PanelBaseBrush" StartPoint="0%,0%" EndPoint="0%,100%">
+      <GradientStop Color="#293032" Offset="0" />
+      <GradientStop Color="#1A1F20" Offset="0.38" />
+      <GradientStop Color="#111516" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="PanelRaisedBrush" StartPoint="0%,0%" EndPoint="0%,100%">
+      <GradientStop Color="#3D4749" Offset="0" />
+      <GradientStop Color="#2B3234" Offset="0.22" />
+      <GradientStop Color="#202627" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="PanelRecessBrush" Color="#0B0F10" />
+    <SolidColorBrush x:Key="PanelHighlightBrush" Color="#5A6568" />
+    <SolidColorBrush x:Key="PanelShadowBrush" Color="#050707" />
+    <SolidColorBrush x:Key="DisplayGlassBrush" Color="#06110B" />
+    <SolidColorBrush x:Key="GreenLedBrush" Color="#A7ED79" />
+    <SolidColorBrush x:Key="AmberLedBrush" Color="#F1B94C" />
+    <SolidColorBrush x:Key="BlueLedBrush" Color="#8CB9E8" />
+
+    <SolidColorBrush x:Key="BackplaneBaseBrush" Color="#D90C1112" />
+    <SolidColorBrush x:Key="BackplaneGridBrush" Color="#283F5A4B" />
+    <SolidColorBrush x:Key="BackplaneSignalBrush" Color="#7C87C569" />
+    <SolidColorBrush x:Key="BackplaneGlowBrush" Color="#204FD77D" />
+    <SolidColorBrush x:Key="BackplanePulseBrush" Color="#D9C7F39D" />
+    <SolidColorBrush x:Key="BackplaneScanBrush" Color="#0FFFFFFF" />
+    <SolidColorBrush x:Key="ScrewFaceBrush" Color="#596164" />
+    <SolidColorBrush x:Key="ScrewSlotBrush" Color="#121617" />
+
+    <system:Boolean x:Key="BackplaneMotionEnabled">True</system:Boolean>
+    <system:Double x:Key="BackplaneMotionSpeed">0.72</system:Double>
+    <system:Double x:Key="BackplaneMotionIntensity">0.62</system:Double>
+    <system:Double x:Key="BackplaneFramesPerSecond">30</system:Double>
+    <system:Double x:Key="KnobDepthScale">1.2</system:Double>
+    <Thickness x:Key="PanelBevelThickness">1.2,1.2,2.4,2.4</Thickness>
+    <CornerRadius x:Key="PanelCornerRadius">4</CornerRadius>
+  </Application.Resources>
+  <Application.Styles>
+    <FluentTheme />
+  </Application.Styles>
+</Application>

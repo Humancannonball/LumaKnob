@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a repeatable LumaKnob software problem.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve LumaKnob. If the issue involves a physical monitor, use the device-report form instead.
+  - type: input
+    id: version
+    attributes:
+      label: LumaKnob version
+      placeholder: v0.1.0-alpha.1
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2, build number
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include expected behavior and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      placeholder: |
+        1. Launch...
+        2. Change...
+        3. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Relevant diagnostics
+      description: Paste only relevant COPY LOG lines. Remove usernames, serial numbers, and unrelated inventory.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety and privacy checks
+      options:
+        - label: I tested the emergency restore path if this issue involves dimming.
+          required: true
+        - label: I removed usernames, EDID serial numbers, and unrelated machine data.
+          required: true

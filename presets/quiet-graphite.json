@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 2,
+  "name": "Quiet Graphite",
+  "colors": {
+    "BackplaneBaseBrush": "#F20B0F10",
+    "BackplaneGridBrush": "#173F5A4B",
+    "BackplaneSignalBrush": "#3D87C569",
+    "BackplaneGlowBrush": "#104FD77D",
+    "BackplanePulseBrush": "#70C7F39D",
+    "BackplaneScanBrush": "#00FFFFFF"
+  },
+  "visuals": {
+    "motionEnabled": false,
+    "motionSpeed": 0.5,
+    "motionIntensity": 0.35,
+    "framesPerSecond": 20,
+    "knobDepth": 0.9,
+    "panelDepth": 1,
+    "cornerRadius": 4
+  }
+}

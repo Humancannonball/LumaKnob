@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="case" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#687376"/>
+      <stop offset="0.26" stop-color="#343b3d"/>
+      <stop offset="1" stop-color="#111617"/>
+    </linearGradient>
+    <radialGradient id="dial" cx="36%" cy="28%" r="72%">
+      <stop offset="0" stop-color="#697376"/>
+      <stop offset="0.48" stop-color="#303638"/>
+      <stop offset="1" stop-color="#111415"/>
+    </radialGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="11" fill="#070a0b" stroke="#98a2a4" stroke-width="2"/>
+  <rect x="6" y="6" width="52" height="52" rx="8" fill="url(#case)" stroke="#202627" stroke-width="2"/>
+  <g fill="#a7ed79">
+    <rect x="30" y="8" width="4" height="7" rx="1"/>
+    <rect x="30" y="49" width="4" height="7" rx="1"/>
+    <rect x="49" y="30" width="7" height="4" rx="1"/>
+    <rect x="8" y="30" width="7" height="4" rx="1"/>
+    <rect x="45.6" y="13.2" width="4" height="7" rx="1" transform="rotate(45 47.6 16.7)"/>
+    <rect x="14.4" y="43.8" width="4" height="7" rx="1" transform="rotate(45 16.4 47.3)"/>
+    <rect x="43.8" y="45.6" width="7" height="4" rx="1" transform="rotate(45 47.3 47.6)"/>
+    <rect x="13.2" y="14.4" width="7" height="4" rx="1" transform="rotate(45 16.7 16.4)"/>
+  </g>
+  <circle cx="32" cy="32" r="18" fill="#090c0d" stroke="#778184" stroke-width="3"/>
+  <circle cx="32" cy="32" r="14" fill="url(#dial)" stroke="#171b1c" stroke-width="2"/>
+  <path d="M32 32 L40 21" stroke="#f3efdc" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="4" fill="#111516" stroke="#7e898b" stroke-width="1.5"/>
+</svg>

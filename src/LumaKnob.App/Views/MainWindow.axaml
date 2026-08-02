@@ -1,0 +1,313 @@
+<Window
+    x:Class="LumaKnob.App.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:LumaKnob.App.Controls"
+    xmlns:viewModels="using:LumaKnob.App.ViewModels"
+    x:DataType="viewModels:MainWindowViewModel"
+    Width="1240"
+    Height="500"
+    CanResize="False"
+    WindowDecorations="None"
+    Title="LumaKnob"
+    Icon="/Assets/lumaknob.ico"
+    Background="#070909">
+  <Window.Styles>
+    <Style Selector="Button.chrome">
+      <Setter Property="Background" Value="{DynamicResource PanelRaisedBrush}" />
+      <Setter Property="Foreground" Value="#D2D9D5" />
+      <Setter Property="BorderBrush" Value="{DynamicResource PanelHighlightBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="2" />
+      <Setter Property="FontSize" Value="11" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="Padding" Value="9,4" />
+    </Style>
+    <Style Selector="Button.nudge">
+      <Setter Property="Background" Value="#202628" />
+      <Setter Property="Foreground" Value="#D5DCDA" />
+      <Setter Property="BorderBrush" Value="#687275" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="2" />
+      <Setter Property="Width" Value="34" />
+      <Setter Property="Height" Value="25" />
+      <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style Selector="Button.fx">
+      <Setter Property="Background" Value="#12191A" />
+      <Setter Property="Foreground" Value="{DynamicResource GreenLedBrush}" />
+      <Setter Property="BorderBrush" Value="#536A5B" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="2" />
+      <Setter Property="FontFamily" Value="Consolas" />
+      <Setter Property="FontSize" Value="9" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="Padding" Value="8,3" />
+    </Style>
+    <Style Selector="Button.monitorSelect">
+      <Setter Property="Background" Value="#171D1E" />
+      <Setter Property="Foreground" Value="#D7DFDB" />
+      <Setter Property="BorderBrush" Value="#536064" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="2" />
+      <Setter Property="Padding" Value="7,4" />
+      <Setter Property="FontSize" Value="9" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <Style Selector="TextBlock.caption">
+      <Setter Property="Foreground" Value="#A9B2AE" />
+      <Setter Property="FontSize" Value="10" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="LetterSpacing" Value="1.7" />
+    </Style>
+    <Style Selector="TextBlock.engraved">
+      <Setter Property="Foreground" Value="#66706D" />
+      <Setter Property="FontSize" Value="8" />
+      <Setter Property="LetterSpacing" Value="1" />
+    </Style>
+    <Style Selector="Border.readout">
+      <Setter Property="Background" Value="{DynamicResource DisplayGlassBrush}" />
+      <Setter Property="BorderBrush" Value="#050707" />
+      <Setter Property="BorderThickness" Value="3" />
+      <Setter Property="CornerRadius" Value="2" />
+      <Setter Property="Padding" Value="7,4" />
+    </Style>
+    <Style Selector="Border.bay">
+      <Setter Property="Background" Value="{DynamicResource PanelRaisedBrush}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource PanelHighlightBrush}" />
+      <Setter Property="BorderThickness" Value="{DynamicResource PanelBevelThickness}" />
+      <Setter Property="CornerRadius" Value="{DynamicResource PanelCornerRadius}" />
+      <Setter Property="Padding" Value="9" />
+    </Style>
+    <Style Selector="Border.recess">
+      <Setter Property="Background" Value="{DynamicResource PanelRecessBrush}" />
+      <Setter Property="BorderBrush" Value="#4C5658" />
+      <Setter Property="BorderThickness" Value="2,2,1,1" />
+      <Setter Property="CornerRadius" Value="2" />
+    </Style>
+    <Style Selector="controls|RotaryKnob">
+      <Setter Property="OuterBrush" Value="{DynamicResource KnobOuterBrush}" />
+      <Setter Property="FaceBrush" Value="{DynamicResource KnobFaceBrush}" />
+      <Setter Property="HubBrush" Value="{DynamicResource KnobHubBrush}" />
+      <Setter Property="RimBrush" Value="{DynamicResource KnobRimBrush}" />
+      <Setter Property="ShadowBrush" Value="{DynamicResource KnobShadowBrush}" />
+      <Setter Property="TickBrush" Value="{DynamicResource KnobTickBrush}" />
+      <Setter Property="ActiveTickBrush" Value="{DynamicResource KnobActiveTickBrush}" />
+      <Setter Property="MarkerBrush" Value="{DynamicResource KnobMarkerBrush}" />
+      <Setter Property="FocusBrush" Value="{DynamicResource KnobFocusBrush}" />
+      <Setter Property="HighlightBrush" Value="{DynamicResource KnobHighlightBrush}" />
+      <Setter Property="DepthScale" Value="{DynamicResource KnobDepthScale}" />
+    </Style>
+  </Window.Styles>
+
+  <Border BorderBrush="#020303" BorderThickness="4" CornerRadius="8" Background="{DynamicResource PanelShadowBrush}">
+    <Border Margin="2" BorderBrush="{DynamicResource PanelHighlightBrush}" BorderThickness="1" CornerRadius="5" Background="{DynamicResource PanelBaseBrush}">
+      <Grid RowDefinitions="38,*,40">
+        <Border Grid.Row="0" Background="{DynamicResource PanelRaisedBrush}" BorderBrush="#697477" BorderThickness="0,0,0,1" CornerRadius="4,4,0,0">
+          <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto" PointerPressed="DragWindow">
+            <Border Grid.Column="0" Width="12" Height="12" CornerRadius="6" Background="#15191A" BorderBrush="#7A8588" BorderThickness="1" Margin="10,0,8,0" VerticalAlignment="Center">
+              <TextBlock Text="−" Foreground="#677174" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+              <Border Width="10" Height="10" CornerRadius="5" Background="{DynamicResource GreenLedBrush}" BorderBrush="#D7FFB7" BorderThickness="1" Margin="0,0,9,0" />
+              <TextBlock Text="LUMAKNOB" Foreground="#E6ECE8" FontWeight="Bold" FontSize="14" LetterSpacing="2.2" />
+              <TextBlock Text="  DISPLAY CONTROL / DEVICE TEST" Foreground="#89938F" FontSize="9" VerticalAlignment="Center" LetterSpacing="0.8" />
+            </StackPanel>
+            <Button x:Name="MotionToggleButton" Grid.Column="2" Classes="fx" Content="FX LIVE" Click="ToggleMotion" Margin="0,6,6,6" ToolTip.Tip="Pause or resume the animated signal backplane." />
+            <Button Grid.Column="3" Classes="chrome" Content="—" Click="MinimizeWindow" Margin="0,5,3,5" MinWidth="32" />
+            <Button Grid.Column="4" Classes="chrome" Content="×" Click="CloseWindow" Margin="0,5,6,5" MinWidth="32" />
+          </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" ColumnDefinitions="270,*" Margin="16,13,16,10">
+          <Border Grid.Column="0" Classes="bay" Margin="0,0,12,0">
+            <StackPanel Spacing="7">
+              <TextBlock Classes="caption" Text="DISPLAY / SIGNAL" HorizontalAlignment="Center" />
+              <Border Classes="recess" Padding="4">
+                <ComboBox ItemsSource="{Binding Displays}" SelectedItem="{Binding SelectedDisplay}" HorizontalAlignment="Stretch" />
+              </Border>
+              <TextBlock
+                  Text="{Binding DiscoveryStatus}" Foreground="#77817D" FontSize="8.5" MaxHeight="27"
+                  TextTrimming="CharacterEllipsis" TextWrapping="Wrap" ToolTip.Tip="{Binding DiscoveryStatus}" />
+              <Border Classes="recess" Padding="10" Margin="0,2,0,0">
+                <StackPanel Spacing="6">
+                  <Grid ColumnDefinitions="Auto,*">
+                    <Border Grid.Column="0" Width="8" Height="8" CornerRadius="4" Background="{DynamicResource AmberLedBrush}" BorderBrush="#FFE19B" BorderThickness="1" Margin="0,0,8,0" VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="1" Text="{Binding SelectedBackend}" Foreground="{DynamicResource AmberLedBrush}" FontWeight="Bold" FontSize="11" />
+                  </Grid>
+                  <TextBlock Text="{Binding TargetNotice}" Foreground="#929D99" FontSize="8.5" MaxHeight="25" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding TargetNotice}" />
+                  <Border Height="1" Background="#364043" Margin="0,2" />
+                  <TextBlock Text="{Binding HardwareStatus}" Foreground="{DynamicResource GreenLedBrush}" FontFamily="Consolas" FontSize="11" />
+                  <TextBlock Text="{Binding ShadeStatus}" Foreground="{DynamicResource AmberLedBrush}" FontFamily="Consolas" FontSize="11" />
+                  <TextBlock Text="{Binding ColorStatus}" Foreground="{DynamicResource BlueLedBrush}" FontFamily="Consolas" FontSize="10" />
+                  <TextBlock Text="{Binding PlanDetail}" Foreground="#77837F" FontSize="9" TextWrapping="Wrap" />
+                </StackPanel>
+              </Border>
+              <Grid ColumnDefinitions="*,Auto" ColumnSpacing="5">
+                <Button Grid.Column="0" Classes="chrome" Content="RESTORE 50%" Command="{Binding RestoreCommand}" HorizontalAlignment="Stretch" />
+                <Button Grid.Column="1" Classes="chrome" Content="COPY LOG" Click="CopyDiagnostics" />
+              </Grid>
+            </StackPanel>
+          </Border>
+
+          <Border Grid.Column="1" Classes="bay" Padding="0" ClipToBounds="True">
+            <Grid>
+              <controls:SignalBackplane
+                  x:Name="SignalBackplane"
+                  MotionEnabled="{DynamicResource BackplaneMotionEnabled}"
+                  MotionSpeed="{DynamicResource BackplaneMotionSpeed}"
+                  MotionIntensity="{DynamicResource BackplaneMotionIntensity}"
+                  FramesPerSecond="{DynamicResource BackplaneFramesPerSecond}"
+                  BaseBrush="{DynamicResource BackplaneBaseBrush}"
+                  GridBrush="{DynamicResource BackplaneGridBrush}"
+                  SignalBrush="{DynamicResource BackplaneSignalBrush}"
+                  GlowBrush="{DynamicResource BackplaneGlowBrush}"
+                  PulseBrush="{DynamicResource BackplanePulseBrush}"
+                  ScanBrush="{DynamicResource BackplaneScanBrush}" />
+
+              <Grid RowDefinitions="Auto,*,Auto" Margin="10,9,10,9">
+              <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="7">
+                  <Border Width="7" Height="7" CornerRadius="4" Background="{DynamicResource GreenLedBrush}" BorderBrush="#D7FFB7" BorderThickness="1" VerticalAlignment="Center" />
+                  <TextBlock Classes="caption" Text="MASTER CONTROL DECK" />
+                </StackPanel>
+                <Border Grid.Column="1" Height="1" Background="#586164" Margin="10,0" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="2" Text="SIGNAL BUS 01  ·  SHARED STEP" Foreground="#778F80" FontFamily="Consolas" FontSize="8.5" Margin="0,0,7,0" />
+              </Grid>
+
+              <Grid Grid.Row="1" ColumnDefinitions="105,*,145,145" Margin="0,7,0,0">
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center" ToolTip.Tip="One shared detent size for brightness, gamma percentage, and warmth percentage. Physical brightness up/down buttons use this amount while LumaKnob is running.">
+                  <TextBlock Classes="caption" Text="STEP" HorizontalAlignment="Center" />
+                  <Border Classes="readout" Margin="0,4,0,0" MinWidth="90">
+                    <TextBlock Text="{Binding StepReadout}" Foreground="{DynamicResource GreenLedBrush}" FontFamily="Consolas" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" />
+                  </Border>
+                  <controls:RotaryKnob
+                      Width="108" Height="108" Minimum="0" Maximum="11" Step="1" FineStep="1"
+                      Value="{Binding StepIndex}" IsEnabled="{Binding CanControl}"
+                      AutomationProperties.Name="Shared adjustment step" />
+                  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="6">
+                    <Button Classes="nudge" Width="31" Height="22" Command="{Binding DecreaseStepCommand}" IsEnabled="{Binding CanControl}">
+                      <Path Width="10" Height="10" Stretch="Uniform" Fill="#D5DCDA" Data="M 1,5 L 11,5 L 11,7 L 1,7 Z" />
+                    </Button>
+                    <Button Classes="nudge" Width="31" Height="22" Command="{Binding IncreaseStepCommand}" IsEnabled="{Binding CanControl}">
+                      <Path Width="10" Height="10" Stretch="Uniform" Fill="#D5DCDA" Data="M 5,1 L 7,1 L 7,5 L 11,5 L 11,7 L 7,7 L 7,11 L 5,11 L 5,7 L 1,7 L 1,5 L 5,5 Z" />
+                    </Button>
+                  </StackPanel>
+                  <TextBlock Classes="engraved" Text="BRIGHTNESS KEYS" HorizontalAlignment="Center" Margin="0,6,0,0" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="3,0,6,0">
+                  <TextBlock Classes="caption" Text="MONITOR BRIGHTNESS" HorizontalAlignment="Center" />
+                  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,4,0,0">
+                    <ItemsControl ItemsSource="{Binding Displays}">
+                      <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                          <StackPanel Orientation="Horizontal" Spacing="7" />
+                        </ItemsPanelTemplate>
+                      </ItemsControl.ItemsPanel>
+                      <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="viewModels:DisplayControlViewModel">
+                          <Border Classes="recess" Width="204" Padding="7,6">
+                            <StackPanel HorizontalAlignment="Stretch">
+                              <Button
+                                  Classes="monitorSelect"
+                                  Command="{Binding SelectCommand}"
+                                  ToolTip.Tip="Select this monitor for gamma, warmth, and physical brightness-button input."
+                                  HorizontalAlignment="Stretch">
+                                <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" MaxWidth="178" />
+                              </Button>
+                              <TextBlock Text="{Binding SelectionStatus}" Foreground="{DynamicResource BlueLedBrush}" FontSize="8" FontWeight="Bold" LetterSpacing="0.8" HorizontalAlignment="Center" Margin="0,3,0,0" />
+                              <Border Classes="readout" Margin="12,3,12,0" Padding="8,3">
+                                <TextBlock Text="{Binding BrightnessReadout}" Foreground="{DynamicResource GreenLedBrush}" FontFamily="Consolas" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" />
+                              </Border>
+                              <controls:RotaryKnob
+                                  Width="148" Height="148" HorizontalAlignment="Center"
+                                  Minimum="{Binding MinimumBrightnessPercent}" Maximum="100"
+                                  Step="{Binding StepPercent}" FineStep="0.01" HomeValue="50" EndValue="0"
+                                  Value="{Binding BrightnessPercent, Mode=TwoWay}" IsEnabled="{Binding CanControl}"
+                                  AutomationProperties.Name="Monitor logical brightness" />
+                              <Grid ColumnDefinitions="*,Auto,Auto,*">
+                                <Button Grid.Column="1" Classes="nudge" Command="{Binding DecreaseBrightnessCommand}" IsEnabled="{Binding CanControl}" Margin="0,0,5,0">
+                                  <Path Width="12" Height="12" Stretch="Uniform" Fill="#D5DCDA" Data="M 1,5 L 11,5 L 11,7 L 1,7 Z" />
+                                </Button>
+                                <Button Grid.Column="2" Classes="nudge" Command="{Binding IncreaseBrightnessCommand}" IsEnabled="{Binding CanControl}">
+                                  <Path Width="12" Height="12" Stretch="Uniform" Fill="#D5DCDA" Data="M 5,1 L 7,1 L 7,5 L 11,5 L 11,7 L 7,7 L 7,11 L 5,11 L 5,7 L 1,7 L 1,5 L 5,5 Z" />
+                                </Button>
+                              </Grid>
+                              <TextBlock Text="{Binding HardwareStatus}" Foreground="{DynamicResource GreenLedBrush}" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                              <TextBlock Text="{Binding ShadeStatus}" Foreground="{DynamicResource AmberLedBrush}" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Center" />
+                            </StackPanel>
+                          </Border>
+                        </DataTemplate>
+                      </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                  </ScrollViewer>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center" ToolTip.Tip="Immediate gamma percentage. 100% is neutral; this dial uses STEP.">
+                  <TextBlock Classes="caption" Text="GAMMA" HorizontalAlignment="Center" />
+                  <Border Classes="readout" Margin="0,4,0,0" MinWidth="112">
+                    <TextBlock Text="{Binding GammaReadout}" Foreground="{DynamicResource BlueLedBrush}" FontFamily="Consolas" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" />
+                  </Border>
+                  <controls:RotaryKnob
+                      Width="142" Height="142" Minimum="50" Maximum="150"
+                      Step="{Binding StepPercent}" FineStep="0.01" HomeValue="100"
+                      Value="{Binding GammaPercent}" IsEnabled="{Binding CanAdjustColor}"
+                      AutomationProperties.Name="Gamma percentage" />
+                  <TextBlock Classes="engraved" Text="100% NEUTRAL" HorizontalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" HorizontalAlignment="Center" ToolTip.Tip="Immediate warmth percentage. 0% is neutral; this dial uses STEP.">
+                  <TextBlock Classes="caption" Text="WARMTH" HorizontalAlignment="Center" />
+                  <Border Classes="readout" Margin="0,4,0,0" MinWidth="112">
+                    <TextBlock Text="{Binding WarmthReadout}" Foreground="{DynamicResource AmberLedBrush}" FontFamily="Consolas" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" />
+                  </Border>
+                  <controls:RotaryKnob
+                      Width="142" Height="142" Minimum="0" Maximum="100"
+                      Step="{Binding StepPercent}" FineStep="0.01" HomeValue="0"
+                      Value="{Binding Warmth}" IsEnabled="{Binding CanAdjustColor}"
+                      AutomationProperties.Name="Warmth percentage" />
+                  <TextBlock Classes="engraved" Text="0% NEUTRAL" HorizontalAlignment="Center" />
+                </StackPanel>
+              </Grid>
+
+              <Border Grid.Row="2" Classes="recess" Padding="8,5" Margin="108,2,5,0">
+                <TextBlock Text="{Binding ColorControlNotice}" Foreground="#9AA5A1" FontSize="8.5" TextWrapping="Wrap" MaxHeight="29" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding ColorControlNotice}" />
+              </Border>
+              </Grid>
+
+              <Grid IsHitTestVisible="False">
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="11" Height="11" CornerRadius="6" Margin="4" Background="{DynamicResource ScrewFaceBrush}" BorderBrush="#899295" BorderThickness="1">
+                  <Border Width="7" Height="1.5" Background="{DynamicResource ScrewSlotBrush}" RenderTransform="rotate(22deg)" />
+                </Border>
+                <Border HorizontalAlignment="Right" VerticalAlignment="Top" Width="11" Height="11" CornerRadius="6" Margin="4" Background="{DynamicResource ScrewFaceBrush}" BorderBrush="#899295" BorderThickness="1">
+                  <Border Width="7" Height="1.5" Background="{DynamicResource ScrewSlotBrush}" RenderTransform="rotate(-18deg)" />
+                </Border>
+                <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="11" Height="11" CornerRadius="6" Margin="4" Background="{DynamicResource ScrewFaceBrush}" BorderBrush="#899295" BorderThickness="1">
+                  <Border Width="7" Height="1.5" Background="{DynamicResource ScrewSlotBrush}" RenderTransform="rotate(-35deg)" />
+                </Border>
+                <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="11" Height="11" CornerRadius="6" Margin="4" Background="{DynamicResource ScrewFaceBrush}" BorderBrush="#899295" BorderThickness="1">
+                  <Border Width="7" Height="1.5" Background="{DynamicResource ScrewSlotBrush}" RenderTransform="rotate(31deg)" />
+                </Border>
+              </Grid>
+            </Grid>
+          </Border>
+        </Grid>
+
+        <Border Grid.Row="2" Background="#101415" BorderBrush="#596366" BorderThickness="0,1,0,0" CornerRadius="0,0,4,4">
+          <Grid ColumnDefinitions="Auto,*,Auto" Margin="12,0">
+            <TextBlock Grid.Column="0" Text="{Binding SafetyStatus}" Foreground="{DynamicResource AmberLedBrush}" FontSize="9" FontWeight="Bold" VerticalAlignment="Center" />
+            <TextBlock Grid.Column="1" Text="{Binding OperationStatus}" Foreground="#A0AAA6" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding OperationStatus}" Margin="12,0" />
+            <Border Grid.Column="2" Classes="recess" Padding="2" VerticalAlignment="Center">
+              <NumericUpDown
+                  Width="130" Minimum="{Binding MinimumBrightnessPercent}" Maximum="100"
+                  Increment="{Binding StepPercent}" Value="{Binding BrightnessPercent}"
+                  IsEnabled="{Binding CanControl}" FormatString="0.00"
+                  AutomationProperties.Name="Enter logical brightness percentage" />
+            </Border>
+          </Grid>
+        </Border>
+      </Grid>
+    </Border>
+  </Border>
+</Window>

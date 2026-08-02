@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>LumaKnob.Host.Simulator</RootNamespace>
+    <AssemblyName>LumaKnob.Simulator</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../LumaKnob.App/LumaKnob.App.csproj" />
+  </ItemGroup>
+</Project>

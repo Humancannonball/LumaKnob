@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LumaKnob.App/LumaKnob.App.csproj" />
+    <Project Path="src/LumaKnob.Core/LumaKnob.Core.csproj" />
+    <Project Path="src/LumaKnob.Engine/LumaKnob.Engine.csproj" />
+    <Project Path="src/LumaKnob.Host.Simulator/LumaKnob.Host.Simulator.csproj" />
+    <Project Path="src/LumaKnob.Host.Windows/LumaKnob.Host.Windows.csproj" />
+    <Project Path="src/LumaKnob.Windows/LumaKnob.Windows.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/LumaKnob.App.Tests/LumaKnob.App.Tests.csproj" />
+    <Project Path="tests/LumaKnob.Core.Tests/LumaKnob.Core.Tests.csproj" />
+    <Project Path="tests/LumaKnob.Engine.Tests/LumaKnob.Engine.Tests.csproj" />
+    <Project Path="tests/LumaKnob.Windows.Tests/LumaKnob.Windows.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "name": "Amber Rack",
+  "colors": {
+    "KnobOuterBrush": "#100B07",
+    "KnobFaceBrush": "#4C3422",
+    "KnobHubBrush": "#20150D",
+    "KnobRimBrush": "#8B704E",
+    "KnobShadowBrush": "#080503",
+    "KnobTickBrush": "#8D795E",
+    "KnobActiveTickBrush": "#FFD26B",
+    "KnobMarkerBrush": "#FFF0C0",
+    "KnobFocusBrush": "#FF9F35",
+    "KnobHighlightBrush": "#C6A779",
+    "PanelBaseBrush": "#201711",
+    "PanelRaisedBrush": "#3B2C21",
+    "PanelRecessBrush": "#100A07",
+    "PanelHighlightBrush": "#80644B",
+    "PanelShadowBrush": "#070403",
+    "DisplayGlassBrush": "#160D03",
+    "GreenLedBrush": "#D5E987",
+    "AmberLedBrush": "#FFC15C",
+    "BlueLedBrush": "#99C6D8",
+    "BackplaneBaseBrush": "#E0160D08",
+    "BackplaneGridBrush": "#354F3828",
+    "BackplaneSignalBrush": "#92E3A745",
+    "BackplaneGlowBrush": "#30E07B25",
+    "BackplanePulseBrush": "#FFF7D071",
+    "BackplaneScanBrush": "#12FFCB78",
+    "ScrewFaceBrush": "#80684D",
+    "ScrewSlotBrush": "#24170D"
+  },
+  "visuals": {
+    "motionEnabled": true,
+    "motionSpeed": 0.55,
+    "motionIntensity": 0.72,
+    "framesPerSecond": 24,
+    "knobDepth": 1.55,
+    "panelDepth": 1.6,
+    "cornerRadius": 2
+  }
+}

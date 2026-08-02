@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>LumaKnob.App</RootNamespace>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets/lumaknob.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../LumaKnob.Core/LumaKnob.Core.csproj" />
+    <ProjectReference Include="../LumaKnob.Engine/LumaKnob.Engine.csproj" />
+  </ItemGroup>
+</Project>
